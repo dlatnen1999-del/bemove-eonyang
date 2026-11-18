@@ -69,6 +69,22 @@ details{border-bottom:1px solid var(--line)}
 summary{padding:18px 0;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:17px;font-weight:700}
 .faq-plus{font-size:26px;line-height:1;color:var(--accent);transition:transform .2s}
 details .ans{padding:0 0 18px;font-size:15px;color:var(--soft)}
+.steps{display:flex;flex-direction:column}
+.step{display:flex;gap:16px}
+.step .rail{display:flex;flex-direction:column;align-items:center}
+.step .dot{width:40px;height:40px;border-radius:50%;background:var(--accent);color:var(--bg);font-size:18px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step .dot.out{background:transparent;border:2px solid var(--accent);color:var(--accent)}
+.step .line{flex:1;width:3px;background:var(--accent);min-height:24px}
+.step .body{padding:4px 0 26px}
+.step .tag{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.02em}
+.step b{display:block;font-size:20px;font-weight:900;letter-spacing:-0.04em;margin-top:2px}
+.step .desc{font-size:15px;color:var(--soft);margin-top:2px}
+.chat{display:flex;flex-direction:column;gap:10px}
+.q{align-self:flex-end;max-width:82%;background:var(--accent);color:var(--bg);font-size:15px;font-weight:700;padding:10px 14px;border-radius:18px 18px 4px 18px}
+.a{display:flex;gap:8px;align-items:flex-end;max-width:90%}
+.a .av{width:32px;height:32px;border-radius:50%;background:var(--raised);border:1.5px solid var(--accent);color:var(--accent);font-size:11px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.a .bub{background:#2A2723;font-size:15px;line-height:1.55;padding:10px 14px;border-radius:18px 18px 18px 4px}
+.chat .gap{height:6px}
 /* 예약 창 */
 .modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.72);display:none;align-items:flex-end;justify-content:center}
 .modal.open{display:flex}
@@ -150,13 +166,13 @@ legend span{color:var(--muted);font-weight:400}
 </div>
 </section>
 
-<!-- 혜택 안내 -->
+<!-- 혜택 안내 (단계형) -->
 <section style="padding:56px 20px 0">
-<h2 class="sec" style="margin-bottom:18px">혜택안내</h2>
-<div style="border-top:1px solid var(--line)">
-<div class="why"><span class="n en">01</span><div><b>울주군민 무조건 7일 무료</b><span>울주군민은 헬스권 7일을 무료로 받아볼 수 있어요.</span></div></div>
-<div class="why"><span class="n en">02</span><div><b>PT도 무료로 체험</b><span>울주군민은 1:1 PT까지 무료로 받아볼 수 있어요.</span></div></div>
-<div class="why"><span class="n en">03</span><div><b>7일 사용 후 할인혜택</b><span>7일 이용 후 등록 시 동반가입시 적용되던<br>5개월 199,500원을 단독사용가능</span></div></div>
+<h2 class="sec" style="margin-bottom:22px">혜택안내</h2>
+<div class="steps">
+<div class="step"><div class="rail"><span class="dot en">1</span><span class="line"></span></div><div class="body"><div class="tag">STEP 1 · 첫 주</div><b>울주군민 무조건 7일 무료</b><div class="desc">울주군민은 헬스권 7일을 무료로 받아볼 수 있어요.</div></div></div>
+<div class="step"><div class="rail"><span class="dot en">2</span><span class="line"></span></div><div class="body"><div class="tag">STEP 2 · 함께</div><b>PT도 무료로 체험</b><div class="desc">울주군민은 1:1 PT까지 무료로 받아볼 수 있어요.</div></div></div>
+<div class="step"><div class="rail"><span class="dot out en">3</span></div><div class="body" style="padding-bottom:0"><div class="tag">STEP 3 · 마음에 들면</div><b>5개월 <span class="y">199,500원</span> 단독 등록</b><div class="desc">7일 이용 후 등록 시, 동반가입 때만 적용되던 5개월 199,500원을 혼자서도 사용할 수 있어요.</div></div></div>
 </div>
 </section>
 
@@ -210,15 +226,24 @@ legend span{color:var(--muted);font-weight:400}
 <a href="https://map.naver.com/p/search/%EB%B9%84%EB%AC%B4%EB%B8%8C%EC%A7%9024%20%EC%96%B8%EC%96%91%EC%A0%90" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;min-height:52px;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:700;text-decoration:none">네이버 지도에서 보기 →</a>
 </section>
 
-<!-- 자주 묻는 질문 -->
+<!-- 자주 묻는 질문 (대화형) -->
 <section id="faq" style="padding:64px 20px 0">
-<h2 class="sec" style="margin-bottom:16px">자주 묻는 질문</h2>
-<div style="border-top:1px solid var(--line)">
-<details><summary>무료체험하면 돈을 내야 하나요?<span class="faq-plus" aria-hidden="true">+</span></summary><div class="ans">아니요. 이름과 번호만 남기면 돼요. 회원권은 체험해 보고 직접 결정하시면 됩니다.</div></details>
-<details><summary>언제 연락이 오나요?<span class="faq-plus" aria-hidden="true">+</span></summary><div class="ans">상담 가능 시간(09:00~23:00)에 담당 선생님이 전화드려 방문 날짜를 잡아드려요.</div></details>
-<details><summary>누가 신청할 수 있나요?<span class="faq-plus" aria-hidden="true">+</span></summary><div class="ans">울주군민이라면 누구나 신청할 수 있어요.</div></details>
-<details><summary>사전예약은 언제까지 받나요?<span class="faq-plus" aria-hidden="true">+</span></summary><div class="ans">11월 18일부터 11월 25일까지 받아요. 7일무료 혜택은 선착순 20명이라 일찍 마감될 수 있어요.</div></details>
-<details><summary>주차할 수 있나요?<span class="faq-plus" aria-hidden="true">+</span></summary><div class="ans">차량을 이용하시는 회원님들도 편하게 방문하실 수 있도록 주차가 가능합니다.<br><br>방문하실 때 주차 관련해서 궁금하신 점이 있으시면 미리 안내해 드리겠습니다.</div></details>
+<h2 class="sec" style="margin-bottom:20px">궁금한 점, <span class="y">물어보세요</span></h2>
+<div class="chat">
+<div class="q">체험하면 돈을 내야 하나요?</div>
+<div class="a"><span class="av en">BM</span><div class="bub">아니요. 이름과 번호만 남기면 돼요. 회원권은 체험해 보고 직접 결정하시면 됩니다.</div></div>
+<div class="gap"></div>
+<div class="q">언제 연락이 오나요?</div>
+<div class="a"><span class="av en">BM</span><div class="bub">상담 가능 시간(09:00~23:00)에 담당 선생님이 전화드려 방문 날짜를 잡아드려요.</div></div>
+<div class="gap"></div>
+<div class="q">누가 신청할 수 있어요?</div>
+<div class="a"><span class="av en">BM</span><div class="bub">울주군민이라면 누구나 신청할 수 있어요.</div></div>
+<div class="gap"></div>
+<div class="q">사전예약은 언제까지 받아요?</div>
+<div class="a"><span class="av en">BM</span><div class="bub">11월 18일부터 11월 25일까지 받아요. 7일무료 혜택은 선착순 20명이라 일찍 마감될 수 있어요.</div></div>
+<div class="gap"></div>
+<div class="q">주차 돼요?</div>
+<div class="a"><span class="av en">BM</span><div class="bub">네, 차량을 이용하시는 회원님들도 편하게 방문하실 수 있도록 주차가 가능합니다. 주차 관련해서 궁금하신 점은 방문 전에 미리 안내해 드릴게요.</div></div>
 </div>
 </section>
 
