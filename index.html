@@ -12,10 +12,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Poppins:ital,wght@1,800;1,900&display=swap" rel="stylesheet">
 
-<!-- ===== 메타 픽셀 자리 =====
-메타 비즈니스 관리자 > 이벤트 관리자에서 받은 픽셀 코드를 이 자리에 붙여넣으세요.
-신청이 완료되면 페이지가 자동으로 fbq('track','Lead')를 보냅니다.
--->
+<!-- Meta Pixel Code (신청 완료 시 페이지가 fbq('track','Lead')를 보냄) -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '2608326256259599');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=2608326256259599&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
 
 <style>
 :root{--accent:#FFD60A;--bg:#0D0C0A;--raised:#1E1B17;--soft:#D8D2C8;--muted:#A8A29C;--line:rgba(255,255,255,0.2)}
@@ -268,7 +281,7 @@ legend span{color:var(--muted);font-weight:400}
 <div style="font-weight:900;font-size:44px;line-height:1;letter-spacing:-0.04em">무료 <span class="en y" data-free-days>31</span>일</div>
 <div style="font-size:14px;color:var(--soft)"><span data-cd-label>12월 1일 오픈까지</span> <b class="en" style="color:#fff" data-cd-text>--:--:--</b></div>
 <button type="button" class="btn-main cut14" data-open>12월 무료 혜택 상담 신청</button>
-<div style="margin-top:20px;font-size:12px;line-height:1.7;color:var(--muted)">비무브짐24 언양점 · 대표자 이준원 · 사업자등록번호 210-43-08760<br>울산광역시 울주군 언양읍 읍성로 161, 1층 · 24시간</div>
+<div style="margin-top:20px;font-size:12px;line-height:1.7;color:var(--muted)">비무브짐24 언양점 · 대표자 이준원 · 사업자등록번호 210-43-08760<br>울산광역시 울주군 언양읍 읍성로 161, 1층 · 24시간<br><a href="privacy.html" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">개인정보 처리방침</a></div>
 </section>
 
 </div>
@@ -309,7 +322,7 @@ legend span{color:var(--muted);font-weight:400}
 <div class="chips" data-chips="interests"></div>
 </fieldset>
 <div style="display:flex;flex-direction:column;gap:8px">
-<label class="agree"><input type="checkbox" id="fAgree"><span><b style="color:#fff">[필수] 개인정보 수집·이용</b> (이름, 휴대폰 번호 / 방문 예약 안내 / 상담 완료일로부터 1년 보관). 동의하지 않으실 수 있으며, 이 경우 상담 신청이 제한됩니다.</span></label>
+<label class="agree"><input type="checkbox" id="fAgree"><span><b style="color:#fff">[필수] 개인정보 수집·이용</b> (이름, 휴대폰 번호, 선택 시 운동 목표·관심 운동 / 방문 예약 안내 / 상담 완료일로부터 1년 보관). 신청 정보는 구글(미국) 서버에 보관됩니다. 동의하지 않으실 수 있으며, 이 경우 신청서로는 상담 신청이 제한됩니다. <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--accent)">개인정보 처리방침</a></span></label>
 <label class="agree"><input type="checkbox" id="fSms"><span>[선택] 이벤트·혜택 문자 수신</span></label>
 </div>
 <div class="err" id="err" role="alert" hidden></div>
@@ -442,8 +455,8 @@ legend span{color:var(--muted);font-weight:400}
       interests: picks.interests.join(', '),
       sms: $('#fSms').checked, utm: utm, event: CONFIG.eventName
     };
-    try { if (window.fbq) window.fbq('track', 'Lead', { content_name: CONFIG.eventName }); } catch (e) {}
     function finish() {
+      try { if (window.fbq) window.fbq('track', 'Lead', { content_name: CONFIG.eventName }); } catch (e) {}
       busy = false; showDone();
       try { localStorage.setItem(DONE_KEY, '1'); } catch (e) {}
     }
